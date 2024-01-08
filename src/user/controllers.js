@@ -15,6 +15,18 @@ const addUser = async (req, res) => {
   }
 };
 
+const login = async (req, res, next) => {
+    try{
+        console.log("hel;llo from login", req.user);
+    } catch (error){
+        res.status(500).json({message:error.message, error:error})
+    }
+};
+
+
+
+
+
 const getAllUsers = async (req, res) => {
     try {
       const users = await User.findAll();
@@ -54,16 +66,12 @@ const getAllUsers = async (req, res) => {
  
 
 
-
-
-
-
-
   module.exports = {
     addUser: addUser,
     getAllUsers: getAllUsers,
     getUserByUsername: getUserByUsername,
     deleteUserByUsername: deleteUserByUsername,
+    login:login,
     // deleteAllUsers: deleteAllUsers,
     // dynamicChange: dynamicChange,
   };
